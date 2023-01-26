@@ -4,6 +4,8 @@ import { CContainer } from "./theme/style.component";
 import { RootStackParamsList } from "./utils/types";
 import styled from "styled-components/native";
 import InitScreen from "./screens/InitScreen";
+import Login from "./screens/AuthScreens/Login";
+import Signup from "./screens/AuthScreens/Signup";
 
 //screens
 
@@ -20,6 +22,8 @@ const AppRoutes = () => {
     <Container>
       <Navigator initialRouteName="Init" screenOptions={{ headerShown: false }}>
         <Screen name="Init" component={InitScreen} />
+        <Screen name="login" component={Login} />
+        <Screen name="signup" component={Signup} />
       </Navigator>
     </Container>
   );

@@ -19,11 +19,11 @@ const InfoText = styled(AppText)`
   color: ${(props) => props.theme.color.phalanxYellow};
   font-weight: 700;
   font-size: 35px;
-  line-height: 33px;
+  line-height: 45px;
 `;
 
 const AppName = styled(InfoText)`
-  margin-top: ${hp(2)}px;
+  margin-top: ${hp(1.5)}px;
 `;
 const ButtonWrapper = styled.View`
   margin-top: ${hp(20)}px;
@@ -42,7 +42,7 @@ const InitScreen = () => {
       <ButtonWrapper>
         <ButtonEl
           onPress={() => {
-            // navigation.navigate("login");
+            navigation.navigate("login");
           }}
         >
           <ButtonText>Continue</ButtonText>
