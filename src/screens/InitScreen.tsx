@@ -16,7 +16,7 @@ const Container = styled(CContainer)`
 `;
 const InfoText = styled(AppText)`
   text-align: center;
-  color: ${(props) => props.theme.color.phalanxYellow};
+  color: ${(props) => props.theme.color.phalanxYellow };
   font-weight: 700;
   font-size: 35px;
   line-height: 45px;

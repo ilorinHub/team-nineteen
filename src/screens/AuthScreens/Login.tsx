@@ -5,6 +5,7 @@ import {
 } from "react-native-responsive-screen";
 
 import { AppText, CContainer } from "../../theme/style.component";
+import { Fragment, useState } from "react";
 
 const Container = styled(CContainer)`
   justify-content: center;
@@ -15,9 +16,11 @@ const InfoText = styled(AppText)``;
 
 const Login = () => {
   return (
-    <Container>
-      <InfoText>Login</InfoText>
-    </Container>
+    <Fragment>
+      <Container>
+        <InfoText>Login</InfoText>
+      </Container>
+    </Fragment>
   );
 };
 
