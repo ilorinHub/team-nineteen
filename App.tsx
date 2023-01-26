@@ -1,20 +1,11 @@
-import { StatusBar } from "expo-status-bar";
-import { StyleSheet, Text, View } from "react-native";
+import "react-native-gesture-handler";
+import ThemeManager from "./src/components/organisms/ThemeManager";
+import AppRoutes from "./src/AppRoutes";
 
 export default function App() {
   return (
-    <View style={styles.container}>
-      <Text>Phalanx Ride</Text>
-      <StatusBar style="auto" />
-    </View>
+    <ThemeManager>
+      <AppRoutes />
+    </ThemeManager>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: "#fff",
-    alignItems: "center",
-    justifyContent: "center",
-  },
-});

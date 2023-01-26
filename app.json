@@ -1,18 +1,19 @@
 {
   "expo": {
-    "name": "phalanx_ride",
-    "slug": "phalanx_ride",
+    "name": "phalanx Ride",
+    "slug": "phalanx_Ride",
     "version": "1.0.0",
     "orientation": "portrait",
-    "icon": "./assets/icon.png",
+    "icon": "./src/assets/icon.png",
     "userInterfaceStyle": "light",
     "splash": {
-      "image": "./assets/splash.png",
-      "resizeMode": "contain",
+      "image": "./src/assets/splash.png",
+      "resizeMode": "cover",
       "backgroundColor": "#ffffff"
     },
     "updates": {
-      "fallbackToCacheTimeout": 0
+      "fallbackToCacheTimeout": 0,
+      "url": "https://u.expo.dev/60564ac3-de99-4bfc-84ac-ca3699c8520e"
     },
     "assetBundlePatterns": [
       "**/*"
@@ -22,12 +23,21 @@
     },
     "android": {
       "adaptiveIcon": {
-        "foregroundImage": "./assets/adaptive-icon.png",
+        "foregroundImage": "./src/assets/adaptive-icon.png",
         "backgroundColor": "#FFFFFF"
       }
     },
     "web": {
-      "favicon": "./assets/favicon.png"
+      "favicon": "./src/assets/favicon.png"
+    },
+    "owner": "phalanx-org",
+    "extra": {
+      "eas": {
+        "projectId": "60564ac3-de99-4bfc-84ac-ca3699c8520e"
+      }
+    },
+    "runtimeVersion": {
+      "policy": "sdkVersion"
     }
   }
 }
