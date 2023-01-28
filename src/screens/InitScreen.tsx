@@ -6,8 +6,11 @@ import {
 import { AppText, ButtonText, CContainer } from "../theme/style.component";
 import ButtonEl from "../components/molecules/ButtonEl";
 import { StackNavigationProp } from "@react-navigation/stack";
-import { RootStackParamsList } from "../utils/types";
-import { useNavigation } from "@react-navigation/native";
+import { RideParams, RootStackParamsList } from "../utils/types";
+import {
+  CompositeNavigationProp,
+  useNavigation,
+} from "@react-navigation/native";
 
 const Container = styled(CContainer)`
   padding-horizontal: ${wp(5.13)}px;
@@ -16,7 +19,7 @@ const Container = styled(CContainer)`
 `;
 const InfoText = styled(AppText)`
   text-align: center;
-  color: ${(props) => props.theme.color.phalanxYellow };
+  color: ${(props) => props.theme.color.phalanxYellow};
   font-weight: 700;
   font-size: 35px;
   line-height: 45px;
@@ -42,7 +45,7 @@ const InitScreen = () => {
       <ButtonWrapper>
         <ButtonEl
           onPress={() => {
-            navigation.navigate("login");
+            navigation.navigate("get ride");
           }}
         >
           <ButtonText>Continue</ButtonText>

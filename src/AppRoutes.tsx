@@ -6,6 +6,7 @@ import styled from "styled-components/native";
 import InitScreen from "./screens/InitScreen";
 import Login from "./screens/AuthScreens/Login";
 import Signup from "./screens/AuthScreens/Signup";
+import GetRide from "./screens/GetRide";
 
 //screens
 
@@ -24,6 +25,7 @@ const AppRoutes = () => {
         <Screen name="Init" component={InitScreen} />
         <Screen name="login" component={Login} />
         <Screen name="signup" component={Signup} />
+        <Screen name="get ride" component={GetRide} />
       </Navigator>
     </Container>
   );
