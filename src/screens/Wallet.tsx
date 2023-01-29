@@ -20,8 +20,8 @@ export const Wrapper = styled.View`
   padding-horizontal: ${wp(5.13)}px;
   flex: 1;
 `;
-const CardWrapper = styled.View`
-  background-color: ${(props) => props.theme.color.phalanxYellow};
+export const CardWrapper = styled.View<{ bg?: string }>`
+  background-color: ${(props) => props.bg || props.theme.color.phalanxYellow};
   margin-vertical: ${hp(3.5)}px;
   padding-horizontal: ${wp(5.13)}px;
   padding-vertical: ${hp(3)}px;

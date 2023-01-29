@@ -1,15 +1,15 @@
-import styled, { css, useTheme } from "styled-components/native";
+import styled, { css, useTheme } from 'styled-components/native';
 import {
   heightPercentageToDP as hp,
   widthPercentageToDP as wp,
-} from "react-native-responsive-screen";
-import { AppText, CContainer, FlexRow } from "../theme/style.component";
-import UserAvatar from "../components/molecules/UserAvatar";
-import { StackNavigationProp } from "@react-navigation/stack";
-import { RootStackParamsList } from "../utils/types";
-import { useNavigation } from "@react-navigation/native";
-import HomeOptionCard from "../components/molecules/HomeOptionCard";
-import { homeOptions } from "../data";
+} from 'react-native-responsive-screen';
+import { AppText, CContainer, FlexRow } from '../theme/style.component';
+import UserAvatar from '../components/molecules/UserAvatar';
+import { StackNavigationProp } from '@react-navigation/stack';
+import { RootStackParamsList } from '../utils/types';
+import { useNavigation } from '@react-navigation/native';
+import HomeOptionCard from '../components/molecules/HomeOptionCard';
+import { homeOptions } from '../data';
 
 const Container = styled(CContainer)`
   padding-top: ${hp(11.19)}px;
@@ -38,15 +38,10 @@ const SpacerHeight = styled.View`
   height: ${hp(4)}px;
 `;
 
-// const Container = styled.View``
-
-type THomeNav = StackNavigationProp<RootStackParamsList, "home">;
+export type THomeNav = StackNavigationProp<RootStackParamsList, 'home'>;
 const Home = () => {
   const isPackage = true;
   const navigation = useNavigation<THomeNav>();
-  const {
-    color: { phalanxYellow },
-  } = useTheme();
   return (
     <Container>
       <UserInfoWrapper>
@@ -55,7 +50,7 @@ const Home = () => {
           height={60}
           text="AM"
           onAvatarPress={() => {
-            navigation.navigate("profile");
+            navigation.navigate('profile');
           }}
         />
         <TextWrapper>
@@ -65,7 +60,7 @@ const Home = () => {
           ) : (
             <PackageName
               onPress={() => {
-                navigation.navigate("packages");
+                navigation.navigate('packages');
               }}
             ></PackageName>
           )}
@@ -76,7 +71,7 @@ const Home = () => {
           <HomeOptionCard
             {...homeOptions[0]}
             onPress={() => {
-              navigation.navigate("get ride");
+              navigation.navigate('get ride');
             }}
             bg="#BBE7FE"
           />
@@ -84,7 +79,7 @@ const Home = () => {
           <HomeOptionCard
             {...homeOptions[1]}
             onPress={() => {
-              navigation.navigate("wallet");
+              navigation.navigate('wallet');
             }}
             bg="#D3B5E5"
           />
@@ -94,7 +89,7 @@ const Home = () => {
           <HomeOptionCard
             {...homeOptions[2]}
             onPress={() => {
-              navigation.navigate("packages");
+              navigation.navigate('packages');
             }}
             bg="#EFF1DB"
           />
@@ -102,7 +97,7 @@ const Home = () => {
           <HomeOptionCard
             {...homeOptions[3]}
             onPress={() => {
-              navigation.navigate("bookings");
+              navigation.navigate('bookings');
             }}
             bg="#FFD4DB"
           />

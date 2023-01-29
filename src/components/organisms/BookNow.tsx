@@ -7,21 +7,24 @@ import {
 } from 'react-native-responsive-screen';
 const Container = styled.View`
   flex-grow: 1;
-  justify-content: center;
-  padding-horizontal: ${wp(5)}px;
+  justify-content: flex-end;
+  padding-horizontal: ${wp(4)}px;
   background-color: rgba(0, 0, 0, 0.7);
 `;
 const MainContent = styled.View`
   background-color: #fff;
-  padding-vertical: ${hp(2.68)}px;
+  padding-vertical: ${hp(4)}px;
   padding-horizontal: ${wp(4)}px;
-  border-top-left-radius: 12px;
-  border-top-right-radius: 12px;
-  border-bottom-left-radius: 12px;
-  border-bottom-right-radius: 12px;
+  border-radius: 12px;
 `;
 const BookNow = () => {
-  return <View></View>;
+  return (
+    <Container>
+      <MainContent>
+        <Text>We ourtside.....</Text>
+      </MainContent>
+    </Container>
+  );
 };
 
 export default BookNow;
