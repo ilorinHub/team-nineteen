@@ -56,7 +56,7 @@ const AvatarContainer = styled.View<{
 const Text = styled.Text`
   font-weight: 900;
   font-size: 11.8951px;
-  color: ${(props) => props.theme.color.fleetBlack};
+  color: ${(props) => props.theme.color.phalanxBlack};
 `;
 const TouchableEl = styled.Pressable``;
 

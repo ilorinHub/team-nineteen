@@ -30,6 +30,7 @@ const InfoText = styled(AppText)`
 
 const TextWrapper = styled(FlexRowJustifyBetween)``;
 const Time = styled(AppText)``;
+
 const ActionWrapper = styled.Pressable`
   background-color: ${(props) => props.theme.color.phalanxYellow};
   border-radius: 100px;

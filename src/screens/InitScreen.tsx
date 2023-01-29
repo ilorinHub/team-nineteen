@@ -14,7 +14,7 @@ import {
 
 const Container = styled(CContainer)`
   padding-horizontal: ${wp(5.13)}px;
-  padding-top: ${hp(40)}px;
+  padding-top: ${hp(45)}px;
   background-color: #020202;
 `;
 const InfoText = styled(AppText)`
@@ -45,7 +45,7 @@ const InitScreen = () => {
       <ButtonWrapper>
         <ButtonEl
           onPress={() => {
-            navigation.navigate('login');
+            navigation.navigate('home');
           }}
         >
           <ButtonText>Continue</ButtonText>
