@@ -1,12 +1,16 @@
 import { View, Text, Pressable } from 'react-native';
 import React, { useState } from 'react';
-import styled from 'styled-components/native';
+import styled, { useTheme } from 'styled-components/native';
 import {
   heightPercentageToDP as hp,
   widthPercentageToDP as wp,
 } from 'react-native-responsive-screen';
-import TransHistory from './TransHistory';
+import TransHistory, { IconWrapper } from './TransHistory';
 import { Textt } from '../atoms/Typography';
+import { MaterialIcons } from '@expo/vector-icons';
+import { EvilIcons } from '@expo/vector-icons';
+import { Ionicons } from '@expo/vector-icons';
+import { MaterialCommunityIcons } from '@expo/vector-icons';
 
 const IsBooking = styled.View`
   border-top-left-radius: 15px;
@@ -31,6 +35,11 @@ const Location = styled.View`
   border-top-width: 1px;
   border-top-color: lightgray;
   padding-vertical: ${hp(2)}px;
+  flex-direction: row;
+`;
+const DTA = styled.View`
+  flex-direction: row;
+  align-items: center;
 `;
 const Status = styled.View<{ status: string }>`
   background-color: ${(props) =>
@@ -57,29 +66,62 @@ const BookingsWrapper = ({ item }: { item: any }) => {
           }
           trans={item.plate}
           det={item.car}
+          avatarUrl={item.avatarUrl}
         />
       </DetailsBorder>
       {more && (
         <More>
           <MoreDet>
-            <Textt>{item.distance}</Textt>
-            <Textt>{item.time}</Textt>
-            <Textt>{item.amount}</Textt>
+            <DTA>
+              <EvilIcons name="location" size={24} color="black" />
+              <Textt>{item.distance}</Textt>
+            </DTA>
+            <DTA>
+              <Ionicons name="time-outline" size={21} color="black" />
+              <Textt ml={`${wp(1)}px`}>{item.time}</Textt>
+            </DTA>
+            <DTA>
+              <MaterialCommunityIcons
+                name="wallet-outline"
+                size={24}
+                color="black"
+              />
+              <Textt ml={`${wp(1)}px`}>{item.amount}</Textt>
+            </DTA>
           </MoreDet>
           <MoreDet>
-            <Textt>Date & Time</Textt>
+            <Textt size="14px">Date & Time</Textt>
             <Textt>{item.date}</Textt>
           </MoreDet>
           <Location>
-            <Textt size="18px" weight={600}>
-              Current Location
-            </Textt>
-            <Textt mt={`${hp(1)}px`}>{item.location}</Textt>
+            <IconWrapper>
+              <MaterialIcons name="my-location" size={24} color="black" />
+            </IconWrapper>
+            <View style={{ marginLeft: 20 }}>
+              <Textt size="18px" weight={600}>
+                Current Location
+              </Textt>
+              <Textt mt={`${hp(1)}px`}>{item.location}</Textt>
+            </View>
           </Location>
         </More>
       )}
       <Pressable onPress={() => setMore(!more)}>
-        <Textt align="center">he</Textt>
+        {more ? (
+          <MaterialIcons
+            style={{ alignSelf: 'center' }}
+            name="keyboard-arrow-down"
+            size={24}
+            color="black"
+          />
+        ) : (
+          <MaterialIcons
+            style={{ alignSelf: 'center' }}
+            name="keyboard-arrow-up"
+            size={24}
+            color="black"
+          />
+        )}
       </Pressable>
     </IsBooking>
   );

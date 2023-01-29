@@ -45,7 +45,7 @@ const InitScreen = () => {
       <ButtonWrapper>
         <ButtonEl
           onPress={() => {
-            navigation.navigate('bookings');
+            navigation.navigate('login');
           }}
         >
           <ButtonText>Continue</ButtonText>

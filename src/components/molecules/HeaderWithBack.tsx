@@ -50,7 +50,7 @@ const HeaderWithBackArrow = ({
       <Pressable onPress={() => goBack()}>
         <Back color="#000" />
       </Pressable>
-      <Textt ml={`${wp(7)}px`} weight={700} size="20px">
+      <Textt ml={`${wp(7)}px`} weight={600} size="26px">
         {headerText}
       </Textt>
       {/* <HeaderText ml={ml} centerText={centerText}>

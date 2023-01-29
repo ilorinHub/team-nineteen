@@ -1,14 +1,15 @@
-import React, { Fragment } from "react";
+import React, { Fragment } from 'react';
 
-import styled, { css } from "styled-components/native";
+import styled, { css } from 'styled-components/native';
 
 import {
   heightPercentageToDP as hp,
   widthPercentageToDP as wp,
-} from "react-native-responsive-screen";
+} from 'react-native-responsive-screen';
 
-import CameraIcon from "../atoms/icons/CameraIcon";
-import RenderUserAvatar from "./RenderUserAvatar";
+import CameraIcon from '../atoms/icons/CameraIcon';
+import RenderUserAvatar from './RenderUserAvatar';
+import { Textt } from '../atoms/Typography';
 
 const Wrapper = styled.View<{ width: number; height: number }>`
   width: ${(props) => props.width}px;
@@ -76,14 +77,14 @@ const UserAvatar = ({
   onAvatarPress = () => {},
   onEditPress = () => {},
   editable = false,
-  text = "",
-  bg = "#e2e6fd",
+  text = '',
+  bg = '#e2e6fd',
   borderColor,
   borderWidth,
   border = false,
   width = 50,
   height = 50,
-  type = "avatar",
+  type = 'avatar',
   avatarUrl,
 }: {
   avatarName?: any;
@@ -95,7 +96,7 @@ const UserAvatar = ({
   editable?: boolean;
   width?: number;
   height?: number;
-  type?: "avatar" | "others";
+  type?: 'avatar' | 'others';
   avatarUrl?: string;
   borderColor?: string;
   borderWidth?: number;
@@ -105,7 +106,7 @@ const UserAvatar = ({
 
   const isAvatar = avatarUrl
     ? avatarUrl
-    : user?.avatar !== "avatar.png" && user?.avatar !== "";
+    : user?.avatar !== 'avatar.png' && user?.avatar !== '';
 
   const url = avatarUrl ? avatarUrl : user?.avatar;
 
@@ -121,18 +122,17 @@ const UserAvatar = ({
           height={height}
         >
           {text ? (
-            <Text>{text}</Text>
+            <Textt weight={600}>{text.toUpperCase()}</Textt>
           ) : (
             <Fragment>
-              {isAvatar && type === "avatar" ? (
+              {isAvatar && type === 'avatar' ? (
                 <Img
                   width={width}
                   height={height}
                   style={{
-                    resizeMode: "contain",
+                    resizeMode: 'contain',
                   }}
-                  // source={{ uri: url }}
-                  source={url}
+                  source={{ uri: url }}
                 />
               ) : (
                 <RenderUserAvatar avatarName={avatarName} />

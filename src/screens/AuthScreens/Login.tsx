@@ -1,41 +1,41 @@
-import React from "react";
-import styled, { css } from "styled-components/native";
+import React from 'react';
+import styled, { css } from 'styled-components/native';
 import {
   heightPercentageToDP as hp,
   widthPercentageToDP as wp,
-} from "react-native-responsive-screen";
+} from 'react-native-responsive-screen';
 
 import {
   AppText,
   ButtonText,
   CContainer,
   CenterContent,
-} from "../../theme/style.component";
-import { Fragment, useState } from "react";
-import InputField from "../../components/molecules/InputField";
-import ButtonEl from "../../components/molecules/ButtonEl";
-import { useNavigation } from "@react-navigation/native";
-import { RootStackParamsList } from "../../utils/types";
-import { StackNavigationProp } from "@react-navigation/stack";
-import { Pressable } from "react-native";
-import BackArrow from "../../components/atoms/icons/BackArrow";
+} from '../../theme/style.component';
+import { Fragment, useState } from 'react';
+import InputField from '../../components/molecules/InputField';
+import ButtonEl from '../../components/molecules/ButtonEl';
+import { useNavigation } from '@react-navigation/native';
+import { RootStackParamsList } from '../../utils/types';
+import { StackNavigationProp } from '@react-navigation/stack';
+import { Pressable } from 'react-native';
+import BackArrow from '../../components/atoms/icons/BackArrow';
 
 const Container = styled(CContainer)`
   flex-direction: column;
-  padding-top: ${hp("10%")}px;
-  padding-left: ${wp("7%")}px;
-  padding-right: ${wp("7%")}px;
+  padding-top: ${hp('10%')}px;
+  padding-left: ${wp('7%')}px;
+  padding-right: ${wp('7%')}px;
 `;
 const InfoText = styled(AppText)`
-  padding-top: ${hp("10%")}px;
-  padding-bottom: ${hp("10%")}px;
+  padding-top: ${hp('10%')}px;
+  padding-bottom: ${hp('10%')}px;
   font-size: 60px;
   line-height: ;
 `;
 
 const InputCon = styled.View`
   flex-direction: column;
-  margin-bottom: ${hp("5%")}px;
+  margin-bottom: ${hp('5%')}px;
 `;
 
 const OneInput = styled.View`
@@ -44,7 +44,7 @@ const OneInput = styled.View`
 const ContinueCon = styled.View`
   flex-direction: row;
   align-items: center;
-  padding-top: ${hp("7%")}px; ;
+  padding-top: ${hp('7%')}px; ;
 `;
 
 const ContBorder = styled.Text`
@@ -75,7 +75,7 @@ const HeaderText = styled(AppText)`
   line-height: normal;
 `;
 
-type TLoginNav = StackNavigationProp<RootStackParamsList, "login">;
+type TLoginNav = StackNavigationProp<RootStackParamsList, 'login'>;
 
 const Login = () => {
   const navigation = useNavigation<TLoginNav>();
@@ -100,7 +100,7 @@ const Login = () => {
         </InputCon>
         <ButtonEl
           onPress={() => {
-            navigation.navigate("get ride");
+            navigation.navigate('bookings');
           }}
         >
           <ButtonText>Login</ButtonText>
@@ -108,7 +108,7 @@ const Login = () => {
 
         <SigninCon>
           <AppText>Don't have an Account? </AppText>
-          <SigninText onPress={() => navigation.navigate("signup")}>
+          <SigninText onPress={() => navigation.navigate('signup')}>
             Sign Up
           </SigninText>
         </SigninCon>

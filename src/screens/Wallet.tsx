@@ -11,10 +11,14 @@ import ButtonEl from '../components/molecules/ButtonEl';
 import TransHistory from '../components/molecules/TransHistory';
 import { useNavigation } from '@react-navigation/native';
 import { TInitNav } from './InitScreen';
+import { Fontisto } from '@expo/vector-icons';
+import Scrollable from '../components/atoms/icons/Scrollable';
+import HeaderWithBackArrow from '../components/molecules/HeaderWithBack';
 
 export const Wrapper = styled.View`
   padding-top: ${hp(6)}px;
   padding-horizontal: ${wp(5.13)}px;
+  flex: 1;
 `;
 const CardWrapper = styled.View`
   background-color: ${(props) => props.theme.color.phalanxYellow};
@@ -29,77 +33,99 @@ const CardName = styled.View`
 `;
 const CardBttom = styled(CardName)`
   align-items: center;
+  margin-top: ${hp(1)}px;
+`;
+const Spacer = styled.View`
+  width: ${wp(1)}px;
 `;
 
 const transArr = [
   {
     name: 'Daniel Austin',
-    amount: '#14',
+    amount: '#400',
     trans: 'Taxi Expenses',
     det: 'Dec 20, 2024 | 11:00 AM',
+    avatar: 'DA',
+    transIcon: <Fontisto name="upload" size={16} color="red" />,
   },
   {
     name: 'Top Up Wallet',
-    amount: '#80',
+    amount: '#8000',
     trans: 'Top Up',
     det: 'Dec 20, 2024 | 11:00 AM',
+    avatar: 'DA',
+    transIcon: <Fontisto name="download" size={16} color="blue" />,
   },
   {
     name: 'Sarah Wilson',
-    amount: '#24',
+    amount: '#1000',
     trans: 'Taxi Expenses',
     det: 'Dec 20, 2024 | 11:00 AM',
+    avatar: 'SW',
+    transIcon: <Fontisto name="upload" size={16} color="red" />,
   },
   {
     name: 'Benny Spanbauer',
-    amount: '#26',
+    amount: '#260',
     trans: 'Taxi Expenses',
     det: 'Dec 20, 2024 | 11:00 AM',
+    avatar: 'BS',
+    transIcon: <Fontisto name="upload" size={16} color="red" />,
   },
   {
     name: 'Top Up Wallet',
-    amount: '#100',
+    amount: '#1500',
     trans: 'Top Up',
     det: 'Dec 20, 2024 | 11:00 AM',
+    avatar: 'DA',
+    transIcon: <Fontisto name="download" size={16} color="blue" />,
   },
 ];
 const Wallet = () => {
   const navigation = useNavigation<TInitNav>();
   return (
     <Wrapper>
-      <Textt weight={600} size="27px">
-        Wallet
-      </Textt>
+      <HeaderWithBackArrow headerText="Wallet" goBack={navigation.goBack} />
       <CardWrapper>
         <CardName>
-          <Textt color="#fff" size="22px">
+          <Textt color="#fff" weight={600} size="24px">
             Andrew Ainsley
           </Textt>
-          <Textt color="#fff" weight={700} size="32px">
+          <Textt color="#fff" weight={700} size="34px">
             VISA
           </Textt>
         </CardName>
-        <Textt color="#fff">.... .... .... 3629</Textt>
-        <Textt color="#fff">Your balance</Textt>
+        <Textt size="22px" mb={`${hp(2)}px`} color="#fff">
+          .... .... .... 3629
+        </Textt>
+        <Textt size="18px" color="#fff">
+          Your balance
+        </Textt>
         <CardBttom>
-          <Textt color="#fff" weight={700} size="40px">
+          <Textt color="#fff" weight={700} size="42px">
             #9957.5
           </Textt>
           <ButtonEl
             onPress={() => navigation.navigate('topup')}
-            height={hp(4)}
+            height={hp(5)}
             bg="#fff"
           >
-            <Textt>Top Up</Textt>
+            <>
+              <Fontisto name="wallet" size={16} color="black" />
+              <Spacer />
+              <Textt>Top Up</Textt>
+            </>
           </ButtonEl>
         </CardBttom>
       </CardWrapper>
       <Textt mb={`${hp(3)}`} size="24px" weight={600}>
         Transaction History
       </Textt>
-      {transArr.map((item) => (
-        <TransHistory {...item} />
-      ))}
+      <Scrollable>
+        {transArr.map((item, indx) => (
+          <TransHistory icon={indx === 1 || indx === 4} {...item} />
+        ))}
+      </Scrollable>
     </Wrapper>
   );
 };

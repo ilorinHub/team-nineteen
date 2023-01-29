@@ -1,12 +1,12 @@
-import styled, { css } from "styled-components/native";
+import styled, { css } from 'styled-components/native';
 import {
   heightPercentageToDP as hp,
   widthPercentageToDP as wp,
-} from "react-native-responsive-screen";
+} from 'react-native-responsive-screen';
 
-import { AppText, ButtonText, CContainer } from "../../theme/style.component";
-import ModalEl from "./ModalEl";
-import ButtonEl from "./ButtonEl";
+import { AppText, ButtonText, CContainer } from '../../theme/style.component';
+import ModalEl from './ModalEl';
+import ButtonEl from './ButtonEl';
 
 const Container = styled(CContainer)`
   background-color: #54565a;
@@ -37,8 +37,13 @@ const SpacerHeight = styled.View`
 `;
 // const Container = styled.View``
 
-
-const LocationEnable = ({ show, setShow }: { show: boolean; setShow:Function; }) => {
+const LocationEnable = ({
+  show,
+  setShow,
+}: {
+  show: boolean;
+  setShow: Function;
+}) => {
   return (
     <ModalEl visible={show} animate transparent>
       <Container>
@@ -51,7 +56,13 @@ const LocationEnable = ({ show, setShow }: { show: boolean; setShow:Function; })
             <ButtonText>Enable Location</ButtonText>
           </ButtonEl>
           <SpacerHeight />
-          <ButtonEl onPress={() => {setShow(false)}} bg="#fff8e8" height={60}>
+          <ButtonEl
+            onPress={() => {
+              setShow(false);
+            }}
+            bg="#fff8e8"
+            height={60}
+          >
             <ButtonText>Not Now</ButtonText>
           </ButtonEl>
         </Box>
