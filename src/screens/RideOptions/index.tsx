@@ -4,6 +4,8 @@ import { CContainer } from "../../theme/style.component";
 import styled from "styled-components/native";
 import { RideParams } from "../../utils/types";
 import Search from "./Search";
+import RideDetails from "./RideDetails";
+import ConnectingRider from "./ConnectingRider";
 
 //screens
 
@@ -20,6 +22,8 @@ const AppRoutes = () => {
   return (
     <Navigator initialRouteName="search" screenOptions={{ headerShown: false }}>
       <Screen name="search" component={Search} />
+      <Screen name="ride details" component={RideDetails} />
+      <Screen name="connect rider" component={ConnectingRider} />
     </Navigator>
   );
 };

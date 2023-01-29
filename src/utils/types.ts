@@ -9,6 +9,8 @@ export type RootStackParamsList = {
 
 export type RideParams = {
   search: undefined;
+  "ride details": undefined;
+  "connect rider": undefined;
 };
 export type TMessageTypes = "error" | "success";
 

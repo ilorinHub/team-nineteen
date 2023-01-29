@@ -1,9 +1,9 @@
 import { entity } from "simpler-state";
 import { Point } from "react-native-google-places-autocomplete";
 
-type TlatLong = Point | undefined;
+export type TlatLong = Point | undefined;
 
-type TRide = {
+export type TRide = {
   destination: { location: TlatLong; description: string } | null;
   origin: { location: TlatLong; description: string } | null;
 };
@@ -44,7 +44,7 @@ export const setSearchHeight = (state: boolean) =>
   }));
 
 export const setRide = (
-  ride: TRide | TlatLong,
+  ride: TRide | { location: TlatLong; description: string } | null,
   type?: "origin" | "destination"
 ) => {
   if (type) {

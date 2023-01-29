@@ -10,7 +10,8 @@ import MapViewDirections from "react-native-maps-directions";
 import { GOOGLE_MAPS_API_KEY } from "@env";
 import { useEffect, useRef } from "react";
 import { phalanxEntity } from "../../entities/phalanx.entity";
-
+import { riders } from "../../data";
+import { FontAwesome5, MaterialCommunityIcons } from "@expo/vector-icons";
 const Container = styled(CContainer)``;
 const InfoText = styled(AppText)``;
 // const Container = styled.View``
@@ -20,14 +21,15 @@ const RenderMap = () => {
     color: { phalanxYellow },
   } = useTheme();
   const mapRef = useRef<MapView>(null);
+  const { ride } = phalanxEntity.use();
 
   useEffect(() => {
     mapRef.current?.fitToSuppliedMarkers(["origin", "destination"], {
       edgePadding: { top: 50, right: 50, bottom: 50, left: 50 },
     });
-  }, []);
+  }, [ride]);
 
-  const { ride } = phalanxEntity.use();
+  console.log({ ride: JSON.stringify(ride, null, 2) });
 
   return (
     <Container>
@@ -36,11 +38,12 @@ const RenderMap = () => {
         initialRegion={{
           latitude: ride.origin?.location?.lat || 8.490495,
           longitude: ride.origin?.location?.lng || 4.541737,
-          latitudeDelta: 0.0922,
-          longitudeDelta: 0.0421,
+          latitudeDelta: 0.005,
+          longitudeDelta: 0.005,
         }}
         mapType="mutedStandard"
         zoomControlEnabled
+        zoomEnabled
         style={{ width: "100%", height: "100%" }}
       >
         {ride.origin && ride.destination && (
@@ -56,7 +59,7 @@ const RenderMap = () => {
         {ride?.origin && (
           <Marker
             title="Origin"
-            description="a small bus"
+            description={ride?.origin?.description}
             coordinate={{
               latitude: ride.origin?.location?.lat || 8.490495,
               longitude: ride.origin?.location?.lng || 4.541737,
@@ -67,14 +70,38 @@ const RenderMap = () => {
         {ride?.destination && (
           <Marker
             title="bus"
-            description="a small bus"
+            description={ride?.destination?.description}
             coordinate={{
-              latitude: ride?.destination?.location?.lat || 8.491811,
-              longitude: ride?.destination?.location?.lng || 4.548737,
+              latitude: ride?.destination?.location?.lat || 0,
+              longitude: ride?.destination?.location?.lng || 0,
             }}
             identifier="destination"
           />
         )}
+        {riders.map((rider, riderIndex) => (
+          <Marker
+            key={riderIndex}
+            title={rider.type}
+            coordinate={{
+              latitude: rider.location.lat,
+              longitude: rider.location.lng,
+            }}
+          >
+            {rider.type === "car" && (
+              <FontAwesome5 name="car" size={32} color={phalanxYellow} />
+            )}
+            {rider.type === "bus" && (
+              <MaterialCommunityIcons
+                name="bus-marker"
+                size={24}
+                color={phalanxYellow}
+              />
+            )}
+            {rider.type === "keke" && (
+              <FontAwesome5 name="caravan" size={24} color={phalanxYellow} />
+            )}
+          </Marker>
+        ))}
       </MapView>
     </Container>
   );
