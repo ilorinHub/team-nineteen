@@ -9,6 +9,7 @@ import { Textt } from '../atoms/Typography';
 import TransHistory from '../molecules/TransHistory';
 import ButtonEl from '../molecules/ButtonEl';
 import { Octicons } from '@expo/vector-icons';
+import InputField from '../molecules/InputField';
 
 const Container = styled.View`
   flex-grow: 1;
@@ -44,7 +45,7 @@ const ButtonWrapper = styled.View`
 const Star = styled.View`
   flex-direction: row;
   justify-content: center;
-  margin-top: ${hp(2)}px;
+  margin-vertical: ${hp(2)}px;
 `;
 const Feedback = ({ cancel }: { cancel: () => void }) => {
   const {
@@ -85,6 +86,11 @@ const Feedback = ({ cancel }: { cancel: () => void }) => {
               />
             ))}
         </Star>
+        <InputField
+          multiline
+          bg="lightgray"
+          placeholder="Write your review..."
+        />
         <ButtonWrapper>
           <ButtonEl onPress={cancel} width={wp(38)} bg="#f4eddc">
             <Textt>Cancel</Textt>

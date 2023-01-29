@@ -30,11 +30,14 @@ const AppRoutes = () => {
 
   return (
     <Container>
-      <Navigator initialRouteName="Init" screenOptions={{ headerShown: false }}>
+      <Navigator
+        initialRouteName={isLoggedIn ? "home" : "Init"}
+        screenOptions={{ headerShown: false }}
+      >
         {!isLoggedIn ? (
           <Fragment>
-            <Screen name="Init" component={InitScreen} />
             <Screen name="login" component={Login} />
+            <Screen name="Init" component={InitScreen} />
             <Screen name="signup" component={Signup} />
           </Fragment>
         ) : (

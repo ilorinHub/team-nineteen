@@ -23,10 +23,12 @@ interface IProps {
   style?: Object;
   editable?: boolean;
   openDateTime?: Function;
+  bg?: string;
+  multiline?: boolean;
 }
 
-const Input = styled(TextInput)<{ focused: boolean }>`
-  background-color: lightgray;
+const Input = styled(TextInput)<{ focused: boolean; bg?: string }>`
+  background-color: ${({ bg }) => bg || '#fffaed'};
   padding-horizontal: ${wp(4.1)}px;
   border-radius: 8px;
   height: ${hp(6.75)}px;
@@ -77,6 +79,8 @@ const InputField = ({
   onFocus = () => {},
   openDateTime,
   style = {},
+  bg,
+  multiline,
 }: IProps) => {
   const [togglePassword, setTogglePassword] = useState(true);
   const [focused, setFocused] = useState(false);
@@ -87,6 +91,8 @@ const InputField = ({
   return (
     <InputWrapper borderError={error} focused={focused}>
       <Input
+        bg={bg}
+        multiline={multiline}
         focused={focused}
         disabled={disabled}
         keyboardType={

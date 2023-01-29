@@ -23,12 +23,9 @@ const Container = styled.View`
 `;
 const MainContent = styled.View`
   background-color: #fff;
-  padding-vertical: ${hp(2.68)}px;
+  padding-vertical: ${hp(4)}px;
   padding-horizontal: ${wp(4)}px;
-  border-top-left-radius: 12px;
-  border-top-right-radius: 12px;
-  border-bottom-left-radius: 12px;
-  border-bottom-right-radius: 12px;
+  border-radius: 12px;
 `;
 
 const InfoText = styled(AppText)``;

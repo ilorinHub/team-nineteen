@@ -19,6 +19,7 @@ import { profileData } from "../../data";
 import ProfileOptionCard from "../../components/molecules/ProfileOptionCard";
 import UserDetails from "../../components/molecules/UserDetails";
 import HeaderWithBackArrow from "../../components/molecules/HeaderWithBack";
+import { clearAuth } from "../../entities/auth.entity";
 
 const ProfileScreen = ({
   setProfileOption,
@@ -54,6 +55,7 @@ const ProfileScreen = ({
                       // setProfileOption("Security");
                     } else if (item.title === "Sign Out") {
                       setisLoggingOut(true);
+                      clearAuth();
                     } else if (item.title === "Terms of Services") {
                       // WebBrowser.openBrowserAsync("https://phalanx.com/terms/");
                     } else if (item.title === "Customer Support") {
