@@ -37,7 +37,6 @@ const RenderMap = () => {
         ref={mapRef}
         initialRegion={{
           latitude: ride.origin?.location?.lat || 8.490495,
-          longitude: ride.origin?.location?.lng || 4.541737,
           latitudeDelta: 0.005,
           longitudeDelta: 0.005,
         }}

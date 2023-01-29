@@ -16,6 +16,9 @@ import { phalanxEntity, setRide } from "../../entities/phalanx.entity";
 import { StackNavigationProp } from "@react-navigation/stack";
 import { RideParams } from "../../utils/types";
 import { useNavigation } from "@react-navigation/native";
+import TransHistory from "../../components/molecules/TransHistory";
+import Feedback from "../../components/organisms/Feedback";
+import ModalEl from "../../components/molecules/ModalEl";
 
 const Container = styled.View`
   flex-grow: 1;
@@ -42,9 +45,11 @@ const ActionWrapper = styled.Pressable`
 const SpacerWidth = styled.View`
   width: ${wp(6)}px;
 `;
-const DriverDetails = styled.View``;
-const ActionsWrapper = styled(FlexRow)`
+const DriverDetails = styled.View`
   margin-vertical: ${hp(5)}px;
+`;
+const ActionsWrapper = styled(FlexRow)`
+  /* margin-vertical: ${hp(5)}px; */
   justify-content: center;
 `;
 // const Container = styled.View``;
@@ -53,6 +58,7 @@ type TConnectRider = StackNavigationProp<RideParams, "connect rider">;
 const ConnectingRider = () => {
   const [isConnecting, setIsConnecting] = useState(true);
   const [isArriving, setIsArriving] = useState(false);
+  const [feedBack, setFeedBack] = useState(false);
   const { travelInfo } = phalanxEntity.use();
   const navigation = useNavigation<TConnectRider>();
   const TextToShow = isConnecting
@@ -77,6 +83,14 @@ const ConnectingRider = () => {
     }, 9000);
   }, []);
 
+  useEffect(() => {
+    if (!isConnecting && !isArriving) {
+      setTimeout(() => {
+        setFeedBack(true);
+      }, 3000);
+    }
+  }, [isConnecting, isArriving]);
+
   return (
     <Container>
       <TextWrapper>
@@ -86,7 +100,16 @@ const ConnectingRider = () => {
 
       {!isConnecting && (
         <Fragment>
-          <DriverDetails></DriverDetails>
+          <DriverDetails>
+            <TransHistory
+              rating
+              avatarUrl="https://gravatar.com/avatar/c899bf390f109b772c4014257ffdc984?s=400&d=robohash&r=x"
+              name="Daniel Austin"
+              amount="4.8"
+              trans="HSW 4736"
+              det="Mercedes-Benz C300"
+            />
+          </DriverDetails>
           <ActionsWrapper>
             {isArriving && (
               <>
@@ -109,6 +132,9 @@ const ConnectingRider = () => {
               <Ionicons name="call" size={32} color="black" />
             </ActionWrapper>
           </ActionsWrapper>
+          <ModalEl transparent visible={feedBack}>
+            <Feedback cancel={() => setFeedBack(false)} />
+          </ModalEl>
         </Fragment>
       )}
     </Container>

@@ -89,18 +89,6 @@ const Search = () => {
     navigation.navigate("ride details");
   };
 
-  // useFocusEffect(
-  //   useCallback(() => {
-  //     console.log("called");
-  //     const unsubscribe = navigation.addListener("focus", () => {
-  //       if (ride.destination) {
-  //         setRide(null, "destination");
-  //       }
-  //       return () => unsubscribe();
-  //     });
-  //   }, [])
-  // );
-
   return (
     <Container full={full}>
       {full && <SpacerHeight />}

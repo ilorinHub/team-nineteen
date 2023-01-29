@@ -5,6 +5,9 @@ import ProfileScreen from "./ProfileScreen";
 import SuccessScreen from "./SuccessScreen";
 import Security from "./Security";
 import ModalEl from "../../components/molecules/ModalEl";
+import { useNavigation } from "@react-navigation/native";
+import { StackNavigationProp } from "@react-navigation/stack";
+import { RootStackParamsList } from "../../utils/types";
 
 export type IProfileOptions =
   | "editProfile"
@@ -22,6 +25,7 @@ export interface ISuccessProps {
   setType?: Function;
 }
 
+type TProfileNav = StackNavigationProp<RootStackParamsList, "profile">;
 const Index = () => {
   const [profileOption, setProfileOption] = useState<IProfileOptions>(null);
   const [isSuccess, setIsSuccess] = useState<ISuccessProps>({
@@ -33,10 +37,13 @@ const Index = () => {
   const setOptionToNull = () => {
     setProfileOption(null);
   };
-
+  const navigation = useNavigation<TProfileNav>();
   return (
     <Fragment>
-      <ProfileScreen setProfileOption={setProfileOption} />
+      <ProfileScreen
+        setProfileOption={setProfileOption}
+        goBack={() => navigation.goBack()}
+      />
       <ModalEl visible={profileOption !== null}>
         {profileOption === "editProfile" && (
           <EditProfile

@@ -6,6 +6,8 @@ import styled, { ThemeProvider } from "styled-components/native";
 import { DefaultTheme, Provider as PaperProvider } from "react-native-paper";
 import { appThemes } from "../../theme/appTheme";
 import { SafeAreaProvider } from "react-native-safe-area-context";
+import Toast from "react-native-toast-message";
+import { toastConfig } from "../atoms/ToastWidget";
 
 const Wrapper = styled.KeyboardAvoidingView`
   flex-grow: 1;
@@ -35,6 +37,7 @@ const ThemeManager = ({ children }: { children: ReactElement }) => {
             </Wrapper>
           </PaperProvider>
         </NavigationContainer>
+        <Toast config={toastConfig} />
       </SafeAreaProvider>
     </ThemeProvider>
   );

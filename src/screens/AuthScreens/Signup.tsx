@@ -19,6 +19,11 @@ import { RootStackParamsList } from "../../utils/types";
 import { StackNavigationProp } from "@react-navigation/stack";
 import BackArrow from "../../components/atoms/icons/BackArrow";
 import { Pressable } from "react-native";
+import { createUserWithEmailAndPassword } from "firebase/auth";
+import { auth } from "../../services";
+import { handleFetchError } from "../../utils/fetch";
+import { toastSuccess } from "../../utils/common";
+import KeyboardAvoidView from "../../components/molecules/KeyboardAvoidView";
 
 const Container = styled(CContainer)`
   flex-direction: column;
@@ -63,11 +68,38 @@ const HeaderText = styled(AppText)`
 // const Contai = styled.View``
 
 type TSignupNav = StackNavigationProp<RootStackParamsList, "signup">;
+type TFormField = "email" | "password" | "phoneNumber" | "fullName";
 
 const Signup = () => {
   const navigation = useNavigation<TSignupNav>();
+  const defaultForm = {
+    email: "",
+    password: "",
+    fullName: "",
+    phoneNumber: "",
+  };
+
+  const [form, setForm] = useState(defaultForm);
+
+  const updateField = (field: TFormField, value: string) => {
+    setForm((currentForm) => ({ ...currentForm, [field]: value }));
+  };
+
+  const signup = async () => {
+    try {
+      const { user } = await createUserWithEmailAndPassword(
+        auth,
+        form.email,
+        form.password
+      );
+      toastSuccess("Signup Successful");
+      navigation.navigate("login");
+    } catch (error) {
+      handleFetchError(error);
+    }
+  };
   return (
-    <Fragment>
+    <KeyboardAvoidView>
       <Container>
         <Pressable
           onPress={() => {
@@ -78,21 +110,45 @@ const Signup = () => {
         </Pressable>
         <HeaderText>Create Your Account</HeaderText>
         <InputCon>
-          <InputField type="text" placeholder="FullName" label="FullName" />
+          <InputField
+            type="text"
+            placeholder="FullName"
+            label="FullName"
+            value={form.fullName}
+            onChangeText={(text) => updateField("fullName", text)}
+          />
           <SpacerHeight />
-          <InputField type="email" placeholder="Email" label="Email" />
+          <InputField
+            type="email"
+            placeholder="Email"
+            label="Email"
+            value={form.email}
+            onChangeText={(text) => updateField("email", text)}
+          />
           <SpacerHeight />
 
           <InputField
             type="numeric"
             placeholder="Phone Number"
-            label="Phone NUmber"
+            label="Phone Number"
+            value={form.phoneNumber}
+            onChangeText={(text) => updateField("phoneNumber", text)}
           />
           <SpacerHeight />
 
-          <InputField type="password" placeholder="Password" label="Password" />
+          <InputField
+            type="password"
+            placeholder="Password"
+            label="Password"
+            value={form.password}
+            onChangeText={(text) => updateField("password", text)}
+          />
         </InputCon>
-        <ButtonEl onPress={() => {}}>
+        <ButtonEl
+          onPress={() => {
+            signup();
+          }}
+        >
           <ButtonText>Sign Up</ButtonText>
         </ButtonEl>
         <SigninCon>
@@ -102,7 +158,7 @@ const Signup = () => {
           </SigninText>
         </SigninCon>
       </Container>
-    </Fragment>
+    </KeyboardAvoidView>
   );
 };
 

@@ -18,11 +18,14 @@ import Scrollable from "../../components/atoms/icons/Scrollable";
 import { profileData } from "../../data";
 import ProfileOptionCard from "../../components/molecules/ProfileOptionCard";
 import UserDetails from "../../components/molecules/UserDetails";
+import HeaderWithBackArrow from "../../components/molecules/HeaderWithBack";
 
 const ProfileScreen = ({
   setProfileOption,
+  goBack,
 }: {
   setProfileOption: (option: IProfileOptions) => void;
+  goBack: Function;
 }) => {
   const [isLoggingOut, setisLoggingOut] = useState(false);
   const [showReferralScreen, setShowReferralScreen] = useState(false);
@@ -31,7 +34,12 @@ const ProfileScreen = ({
     <Fragment>
       <Container>
         <HeaderWrapper>
-          <ScreenName>Profile</ScreenName>
+          <HeaderWithBackArrow
+            headerText="Profile"
+            goBack={() => {
+              goBack();
+            }}
+          />
         </HeaderWrapper>
         <UserDetailsWrapper>
           <UserDetails onEditPress={() => setProfileOption("editProfile")} />

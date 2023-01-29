@@ -28,12 +28,11 @@ export const authEntity = entity(defaultState, [
 ]);
 console.log("passed");
 
-export const setAuth = (user: any, token: any, refresh: any) =>
+export const setAuth = (user: any, token: any) =>
   authEntity.set((currentData: any) => ({
     ...currentData,
     user,
     token,
-    refresh,
   }));
 
 export const setToken = (token: string) =>
