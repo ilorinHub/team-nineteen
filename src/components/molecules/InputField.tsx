@@ -1,14 +1,14 @@
-import React, { useState } from "react";
-import { TextInput } from "react-native-paper";
-import styled, { css } from "styled-components/native";
-import { useTheme } from "styled-components/native";
+import React, { useState } from 'react';
+import { TextInput } from 'react-native-paper';
+import styled, { css } from 'styled-components/native';
+import { useTheme } from 'styled-components/native';
 
 import {
   heightPercentageToDP as hp,
   widthPercentageToDP as wp,
-} from "react-native-responsive-screen";
-import EyeIcon from "../atoms/icons/EyeIcon";
-import EyeOffIcon from "../atoms/icons/EyeOffIcon";
+} from 'react-native-responsive-screen';
+import EyeIcon from '../atoms/icons/EyeIcon';
+import EyeOffIcon from '../atoms/icons/EyeOffIcon';
 
 interface IProps {
   error?: boolean;
@@ -19,15 +19,14 @@ interface IProps {
   disabled?: boolean;
   onFocus?: () => void;
   onSubmitEditing?: Function;
-  type?: "text" | "password" | "numeric" | "phone" | "email";
-
+  type?: 'text' | 'password' | 'numeric' | 'phone' | 'email';
   style?: Object;
   editable?: boolean;
   openDateTime?: Function;
 }
 
 const Input = styled(TextInput)<{ focused: boolean }>`
-  background-color: #fafafa;
+  background-color: lightgray;
   padding-horizontal: ${wp(4.1)}px;
   border-radius: 8px;
   height: ${hp(6.75)}px;
@@ -66,14 +65,14 @@ const InputWrapper = styled.View<{
 `;
 
 const InputField = ({
-  type = "text",
+  type = 'text',
   editable = true,
-  value = "",
-  label = "",
+  value = '',
+  label = '',
   error = false,
   onChangeText = () => {},
   onSubmitEditing = () => {},
-  placeholder = "",
+  placeholder = '',
   disabled = false,
   onFocus = () => {},
   openDateTime,
@@ -81,7 +80,7 @@ const InputField = ({
 }: IProps) => {
   const [togglePassword, setTogglePassword] = useState(true);
   const [focused, setFocused] = useState(false);
-  const isHidePassword = type === "password" && togglePassword;
+  const isHidePassword = type === 'password' && togglePassword;
   const {
     color: { phalanxBlack2, phalanxYellow },
   } = useTheme();
@@ -91,11 +90,11 @@ const InputField = ({
         focused={focused}
         disabled={disabled}
         keyboardType={
-          type === "numeric"
-            ? "numeric"
-            : type === "email"
-            ? "email-address"
-            : "default"
+          type === 'numeric'
+            ? 'numeric'
+            : type === 'email'
+            ? 'email-address'
+            : 'default'
         }
         onFocus={() => {
           onFocus();
@@ -108,7 +107,7 @@ const InputField = ({
         value={value}
         label={label}
         onChangeText={onChangeText}
-        placeholder={focused ? "" : placeholder}
+        placeholder={focused ? '' : placeholder}
         outlineColor="#fff"
         activeOutlineColor="#fff"
         activeUnderlineColor="#a9a9a9"
@@ -119,15 +118,15 @@ const InputField = ({
         secureTextEntry={isHidePassword}
         autoCapitalize="none"
         editable={editable}
-        underlineStyle={{ display: "none" }}
+        underlineStyle={{ display: 'none' }}
         //@ts-ignore
-        theme={{ colors: { onSurfaceVariant: "#a9a9a9" } }}
+        theme={{ colors: { onSurfaceVariant: '#a9a9a9' } }}
         right={
-          type === "password" && (
+          type === 'password' && (
             <TextInput.Icon
               icon={() => (isHidePassword ? <EyeIcon /> : <EyeOffIcon />)}
               onPress={() => setTogglePassword(!togglePassword)}
-              color={(focused) => (focused ? "#fffaed" : phalanxYellow)}
+              color={(focused) => (focused ? '#fffaed' : phalanxYellow)}
             />
           )
         }

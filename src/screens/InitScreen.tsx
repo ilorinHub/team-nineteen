@@ -1,22 +1,22 @@
-import styled, { css } from "styled-components/native";
+import styled, { css } from 'styled-components/native';
 import {
   heightPercentageToDP as hp,
   widthPercentageToDP as wp,
-} from "react-native-responsive-screen";
-import { AppText, ButtonText, CContainer } from "../theme/style.component";
-import ButtonEl from "../components/molecules/ButtonEl";
-import { StackNavigationProp } from "@react-navigation/stack";
-import { RootStackParamsList } from "../utils/types";
-import { useNavigation } from "@react-navigation/native";
+} from 'react-native-responsive-screen';
+import { AppText, ButtonText, CContainer } from '../theme/style.component';
+import ButtonEl from '../components/molecules/ButtonEl';
+import { StackNavigationProp } from '@react-navigation/stack';
+import { RootStackParamsList } from '../utils/types';
+import { useNavigation } from '@react-navigation/native';
 
 const Container = styled(CContainer)`
   padding-horizontal: ${wp(5.13)}px;
   padding-top: ${hp(40)}px;
-  background-color: #fffaed;
+  background-color: #020202;
 `;
 const InfoText = styled(AppText)`
   text-align: center;
-  color: ${(props) => props.theme.color.phalanxYellow };
+  color: ${(props) => props.theme.color.phalanxYellow};
   font-weight: 700;
   font-size: 35px;
   line-height: 45px;
@@ -30,7 +30,7 @@ const ButtonWrapper = styled.View`
 `;
 // const Container = styled.View``
 
-type TInitNav = StackNavigationProp<RootStackParamsList, "Init">;
+export type TInitNav = StackNavigationProp<RootStackParamsList, 'Init'>;
 
 const InitScreen = () => {
   const navigation = useNavigation<TInitNav>();
@@ -42,7 +42,7 @@ const InitScreen = () => {
       <ButtonWrapper>
         <ButtonEl
           onPress={() => {
-            navigation.navigate("login");
+            navigation.navigate('bookings');
           }}
         >
           <ButtonText>Continue</ButtonText>

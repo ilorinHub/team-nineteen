@@ -1,10 +1,10 @@
-import React, { Fragment, ReactElement } from "react";
-import styled, { css } from "styled-components/native";
-import { Button as PButton } from "react-native-paper";
+import React, { Fragment, ReactElement } from 'react';
+import styled, { css } from 'styled-components/native';
+import { Button as PButton } from 'react-native-paper';
 import {
   heightPercentageToDP as hp,
   widthPercentageToDP as wp,
-} from "react-native-responsive-screen";
+} from 'react-native-responsive-screen';
 
 interface IButtonProps {
   children?: ReactElement;
@@ -82,7 +82,7 @@ const ButtonEl = ({
       contentStyle={[
         {
           height: height ? hp(customHeight) : hp(7.4),
-          width: width ? wp(customWidth) : "auto",
+          width: width ? wp(customWidth) : 'auto',
         },
       ]}
       uppercase={false}
