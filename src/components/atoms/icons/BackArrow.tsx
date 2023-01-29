@@ -1,7 +1,7 @@
 import * as React from 'react';
 import Svg, { SvgProps, Path } from 'react-native-svg';
 
-const SvgComponent = ({ color }: { color?: string & SvgProps }) => (
+const BackArrow = ({ color }: { color?: string & SvgProps }) => (
   <Svg
     width={12}
     height={14}
@@ -14,5 +14,4 @@ const SvgComponent = ({ color }: { color?: string & SvgProps }) => (
     />
   </Svg>
 );
-// "#1B72E7"
-export default SvgComponent;
+export default BackArrow;

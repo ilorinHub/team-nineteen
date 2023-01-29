@@ -1,14 +1,15 @@
 import React from 'react';
-import { createStackNavigator } from '@react-navigation/stack';
+import Wallet from './screens/Wallet';
+import TopUp from './screens/TopUp';
+import Bookings from './screens/Bookings';
 import { CContainer } from './theme/style.component';
 import { RootStackParamsList } from './utils/types';
 import styled from 'styled-components/native';
 import InitScreen from './screens/InitScreen';
 import Login from './screens/AuthScreens/Login';
 import Signup from './screens/AuthScreens/Signup';
-import Wallet from './screens/Wallet';
-import TopUp from './screens/TopUp';
-import Bookings from './screens/Bookings';
+import GetRide from './screens/GetRide';
+import { createStackNavigator } from '@react-navigation/stack';
 
 //screens
 
@@ -29,6 +30,7 @@ const AppRoutes = () => {
         <Screen name="signup" component={Signup} />
         <Screen name="topup" component={TopUp} />
         <Screen name="bookings" component={Bookings} />
+        <Screen name="get ride" component={GetRide} />
       </Navigator>
     </Container>
   );
