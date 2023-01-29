@@ -1,4 +1,4 @@
-import { NavigatorScreenParams } from '@react-navigation/native';
+import { NavigatorScreenParams } from "@react-navigation/native";
 
 export type RootStackParamsList = {
   Init: undefined;
@@ -7,15 +7,18 @@ export type RootStackParamsList = {
   wallet: undefined;
   topup: undefined;
   bookings: undefined;
-  'get ride': undefined;
+  "get ride": undefined;
+  home: undefined;
+  profile: undefined;
+  packages: undefined;
 };
 
-export type TMessageTypes = 'error' | 'success';
+export type TMessageTypes = "error" | "success";
 
 export type RideParams = {
   search: undefined;
-  'ride details': undefined;
-  'connect rider': undefined;
+  "ride details": undefined;
+  "connect rider": undefined;
 };
 
 // width=428px

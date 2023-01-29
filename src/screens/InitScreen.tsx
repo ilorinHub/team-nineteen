@@ -1,20 +1,20 @@
-import styled, { css } from 'styled-components/native';
+import styled, { css } from "styled-components/native";
 import {
   heightPercentageToDP as hp,
   widthPercentageToDP as wp,
-} from 'react-native-responsive-screen';
-import { AppText, ButtonText, CContainer } from '../theme/style.component';
-import ButtonEl from '../components/molecules/ButtonEl';
-import { StackNavigationProp } from '@react-navigation/stack';
-import { RideParams, RootStackParamsList } from '../utils/types';
+} from "react-native-responsive-screen";
+import { AppText, ButtonText, CContainer } from "../theme/style.component";
+import ButtonEl from "../components/molecules/ButtonEl";
+import { StackNavigationProp } from "@react-navigation/stack";
+import { RideParams, RootStackParamsList } from "../utils/types";
 import {
   CompositeNavigationProp,
   useNavigation,
-} from '@react-navigation/native';
+} from "@react-navigation/native";
 
 const Container = styled(CContainer)`
   padding-horizontal: ${wp(5.13)}px;
-  padding-top: ${hp(40)}px;
+  padding-top: ${hp(45)}px;
   background-color: #020202;
 `;
 const InfoText = styled(AppText)`
@@ -33,7 +33,7 @@ const ButtonWrapper = styled.View`
 `;
 // const Container = styled.View``
 
-export type TInitNav = StackNavigationProp<RootStackParamsList, 'Init'>;
+export type TInitNav = StackNavigationProp<RootStackParamsList, "Init">;
 
 const InitScreen = () => {
   const navigation = useNavigation<TInitNav>();
@@ -45,7 +45,7 @@ const InitScreen = () => {
       <ButtonWrapper>
         <ButtonEl
           onPress={() => {
-            navigation.navigate('bookings');
+            navigation.navigate("home");
           }}
         >
           <ButtonText>Continue</ButtonText>

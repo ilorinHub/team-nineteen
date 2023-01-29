@@ -55,7 +55,7 @@ const AvatarContainer = styled.View<{
 const Text = styled.Text`
   font-weight: 900;
   font-size: 11.8951px;
-  color: ${(props) => props.theme.color.fleetBlack};
+  color: ${(props) => props.theme.color.phalanxBlack};
 `;
 const TouchableEl = styled.Pressable``;
 
@@ -121,7 +121,9 @@ const UserAvatar = ({
           height={height}
         >
           {text ? (
-            <Text>{text}</Text>
+            <Text style={{ textTransform: "uppercase", fontSize: 18 }}>
+              {text}
+            </Text>
           ) : (
             <Fragment>
               {isAvatar && type === "avatar" ? (
@@ -131,8 +133,8 @@ const UserAvatar = ({
                   style={{
                     resizeMode: "contain",
                   }}
-                  // source={{ uri: url }}
-                  source={url}
+                  source={{ uri: url }}
+                  // source={url}
                 />
               ) : (
                 <RenderUserAvatar avatarName={avatarName} />
