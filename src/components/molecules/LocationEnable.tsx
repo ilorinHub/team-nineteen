@@ -36,8 +36,7 @@ const SpacerHeight = styled.View`
   height: ${hp(2)}px;
 `;
 // const Container = styled.View``
-// const Container = styled.View``
-// const Container = styled.View``
+
 
 const LocationEnable = ({ show, setShow }: { show: boolean; setShow:Function; }) => {
   return (
